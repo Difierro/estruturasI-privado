@@ -1,0 +1,69 @@
+Os ponteiros permitem manipular valores e endereços de memoria, permitindo a transferência de dados entre funçoes, 
+tornando assim, possivel alterar dados de outras partes do programas
+
+o ENDEREÇO DE UMA VARIÁVEL é o local onde a variavel esta armazenadda na memoria, os ponteiros sao usados para acessar
+esses endereços. a vantagem de usar ponteiro é que acessando o endereço e nao a variavel em si, podemos encontrar o conteudo
+das variaveis em locais fora do escopo que a funçao se encontra.
+
+outra funcionalidade de ponteiros é que eles podem  realizar operações sobre dados armazenados em memoria.
+
+--- OPERADOR DE ENDEREÇO & ---
+o operador de memoria & é usado para acessar o endereço de memoria de uma variavel. Não é permitido modificar o endereço de uma 
+variavel por atribuição.
+
+
+--- DECLARAÇÃO DE PONTEIROS ---     
+os ponteiros sao declarados usando o operador seguido do tipo de dado especifico. eles podem ser usados para alterar os dados armazenados 
+na memoria
+
+    1. Declarando ponteiros
+        int * point;
+        => tipo_apontado * nome_da_variavel_ponteiro
+
+    2. Imprimindo o valor de um ponteiro
+        printf("ponteiro = %p" , point);
+
+--- ACESSO AO ENDEREÇO DE UMA VARIÁVEL ---
+
+    int variavel;
+    int * ponteiro;
+
+ponteiro = &variavel;  <-- ponteiro recebe endereço de memoria de variavel
+
+--- INDIREÇÃO DE PONTEIRO COM * ---
+os ponteiros podem ser usados para acessar e manipular os dados armazenados um endereço de memoria utilizando o *
+
+quando o * é usado fora do escopo de declaração, ou seja, quando ele não está sendo declarado, ele permite acessar direto o conteudo contido 
+naquele endereço que ele aponta, permitindo alterar o conteudo da variavel apontada pelo ponteiro.
+
+--- O PONTEIRO NULO NULL ---
+usado para indicar ausencia de valor valido naquele ponteiro, Exemplo:
+    int * pointer;
+    pointer = NULL;
+
+--- COMPATIBILIDADE E CONVERSAO ENTRE PONTEIROS ---
+ponteiros são versateis. A conversão entre diferentes tipos de ponteiros pode ser usada para acessarr a memoria e dados de forma segura. Exemplo:
+    float numero;
+    int * pointer;
+    pointer = &numero;
+    pointer = (int *) &numero; // aqui ele está forçando o programa a converter numero, q era float, em int. isso usando o (int *)
+
+--- ARITMÉTICA DE PONTEIROS ---
+a aritmetica de ponteiros permite que seja possivel manipular memoria e dados usando operações matematicas simples. Pode ser usado para acessar dados
+especificos em estrutura de dados complexas.
+
+Considerando que p é um ponteiro:
+-> Adição ou Subtração de um inteiro a um ponteiro
+    p + 2 OU p - 3      //o ponteiro p vai 'subir' 2 celulas da memoria ou 'descer' 3 celulas da memoria
+-> Incremento de um ponteiro
+    p++ OU ++p
+-> Decremento de um ponteiro
+    p-- OU --p
+-> Adição ou Subtração entre dois ponteiros do MESMO TIPO
+    p1 + p2 OU p1 - p2      // vai retornar um valor inteiro
+
+    OBS: se tiver, por exemplo, um p1 do tipo char e é atribuido a ele a soma do ponteiro p2, que é inteiro, com 3, dará certo, mas 
+    os ponteiros não são compativeis
+        char * p1;
+        int * p2;
+        p1 = p2 + 3;
