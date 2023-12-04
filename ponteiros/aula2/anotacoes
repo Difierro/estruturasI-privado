@@ -1,0 +1,16 @@
+Um ponteiro de um ponteiro é uma variavel que armazena apenas o endereço de ponteiro. Ex: 
+    int * p;
+    int ** pp;
+    pp = &p;
+
+--- USANDO FUNÇÃO COM PONTEIROS ---
+uma maneira de trabalhar com funçoes é usar ponteiros como argumentos da função. Isso permite que a função acesse
+e modifique o valor de uma variavel fora de seu proprio escopo.
+
+--- PONTEIRO DE FUNÇÃO ---
+usado para apontar para uma funçao especifica, permitindo que a funçao possa ser chamada diretamente. Ex:
+    int incremento(int valor){  
+        return valor++;
+    }
+
+    int (* ponteiroInc)(int) = incremento;//analisa lista de atributos da função do endereço salvo.
