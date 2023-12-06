@@ -1,0 +1,35 @@
+--- ALOCAÇAO DINAMICA --- 
+E importante notar que a alocação dinamica exige a liberação de memoria quando n for mai preciso usar aquele endereço
+de memoria por meio da função free().
+
+a alocação dinamica utiliza as funçoes malloc, realloc e calloc
+malloc = reservar espaço de memoria.
+
+    int main(){
+        int * vetor = malloc(3 * sizeof(int)); // malloc(nElementosArray * tamanhoEmBytes). Retorna o tamanho endereço do primeiro elemento do array.
+        if( vetor == NULL){ 
+            printf("memoria insuficiente");
+            exit(1); 
+        }else{
+            printf("alocação bem sucedida");
+        }
+        free(vetor); //libera espaço da memoria quando o array não for mais utilizado
+        return 0;
+    };
+
+o vetor pode ser acessado com *(vetor+ 1), *(vetor + 2)... ou &vetor[0], &vetor[1]
+                                  acessa conteudo               acessa endereço
+
+ int * vetor = (int *) malloc(3 * sizeof(int)) // cache, ele força o compilador a retornar um valor int
+
+ calloc = reservar espaço de memoria. Todas as posições do vetor sera preenchido com 0.
+
+## realoc 
+Usado para realocar o tamanho do array.
+Ex:
+    int main(){
+        int * vetor = malloc(3 * sizeof(int)); 
+        int novoTamanho = 5;
+
+        vetor = (int *) realloc(vetor, novoTamanho * sizeof(int)); //aumenta ou diminui tamanho do vetor, permitindo realocar memoria.
+    }
