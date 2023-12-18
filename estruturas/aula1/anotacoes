@@ -1,0 +1,71 @@
+--- STRUCT ---
+Uma estrutura de dados é uma forma de organizar dados em um programa, facilitando a forma de acessar esses dados.
+as informações sao compostas por diversos campos. A estrutura agrupa diversas vaariáveis em um unico contexto
+Para declarar uma estrutura de dados usamos o struct:
+
+    struct pessoa {
+    char nome[50];
+    int idade;
+    };
+
+a estrutura pessoa passa a ser um TIPO, e podemos então declarar variáveis desse tipo. Após a definição da estrutura, a linha de código
+    
+    struct pessoa p;
+
+declara p como uma variacel do tipo struct pessoa.
+
+Manipulamos os elementos da mesma forma de uma variavel simples.
+
+
+
+# Acessando valores de um struct
+Para acessar os valores de uma estrutura, basta usar o operador de acesso (.) e o nome da variável. 
+    
+    struct pessoa p;
+
+    p.idade = 20;
+    p.nome = "João";
+
+Para acessar o endereço de um struct usamos o operador &
+    printf("%d", &p);
+
+
+
+
+# Ponteiros e Estruturas
+Uma estrutura é um ponteiro para a primeira variável da estrutura.
+
+    struct pessoa p;
+    struct pessoa *p = &p; //aponta para a primeira variável, nesse caso idade.
+
+    printf("%d", *p);
+
+tambem podemos declarar usando: 
+
+    struct pessoa *pp;
+
+e acessar, assim, com
+
+    (*pp).idade = 20;
+
+nesse caso, os parenteses são indispensáveis pois o operador 'conteudo de' tem menor precendência do que o operador de acesso (.). 
+
+Outra forma de acessar é com o outro operador de acesso (->). Assim o codigo acima poderia ser reescrito: 
+
+    pp->idade = 20;
+
+=> OBS: a diferença entre o (.) e (->) é que enquanto o primeiro é usado quando se tem uma variavel estrutura e ueremos acessá-la, o segundo e usado quando quando temos uma variavel ponteiro para estrutura. 
+Seguindo o raciocinio, se temos o ponteiro e queremos acessar o endereço de um campo, usamos 
+    &pp->idade.
+
+
+
+# Alocação Dinâmica de Estruturas
+Para alocar dinamicamente uma estrutura, basta usar a função malloc.
+
+    struct pessoa *p = malloc(sizeof(struct pessoa));
+
+    p->idade = 20;  // utiliza o operador -> para acessar as variáveis.
+    p->nome = "João"; 
+
+    printf("%d", p->idade);
